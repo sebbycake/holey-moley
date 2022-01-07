@@ -85,3 +85,14 @@ h1 {
   --animate-delay: 0s;
 }
 
+/* For warning */
+.warning {
+  position: absolute;
+  top: 20%;
+  left: 4%;
+  width: 96%;
+}
+
+.animate__animated.animate__fadeIn {
+  --animate-duration: 7s;
+}

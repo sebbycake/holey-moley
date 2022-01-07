@@ -142,6 +142,16 @@ function removeGamePage() {
 
 function showBossPage() {
     bossPage.classList.toggle('hide')
+
+    // Warning comes here
+    const warning = new Audio('audio/megaman_warning.mp3')
+    backgroundMusic.pause()
+
+    setTimeout(() => {
+        warning.play()
+        document.querySelector('.warning').classList.toggle('hide')
+    }, 2000)
+
     // setTimeout(() => {
     //     removeBossPage()
     //     showEndPage()
