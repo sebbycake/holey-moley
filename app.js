@@ -146,6 +146,7 @@ function showBossPage() {
     //     removeBossPage()
     //     showEndPage()
     // }, 10000)
+    spawnMoles()
 }
 
 function removeBossPage() {
@@ -207,4 +208,22 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
+}
+
+function createMole() {
+    const divMole = document.createElement('div')
+    divMole.classList.add('mini-mole', 'animate__animated', 'animate__zoomIn')
+    const topPosition = Math.random() * 100
+    const leftPosition = Math.random() * 100
+    divMole.style.top = topPosition + "%" 
+    divMole.style.left = leftPosition + "%"
+    document.body.append(divMole)
+    divMole.onclick = () => console.log(this)
+}
+
+function spawnMoles() {
+    setTimeout(() => {
+        createMole()
+        spawnMoles()
+    }, 1000)
 }

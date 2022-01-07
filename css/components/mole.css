@@ -17,3 +17,10 @@
     height: 100%;
     z-index: 3;
 }
+
+.mini-mole {
+    background: url(../../images/mole-small.png) no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
