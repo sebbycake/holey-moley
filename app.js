@@ -80,7 +80,7 @@ function startGame() {
         atGameOver = true
         removeGamePage()
         showBossPage()
-    }, 5000)
+    }, 1000)
 }
 
 function restartGame() {
@@ -142,10 +142,10 @@ function removeGamePage() {
 
 function showBossPage() {
     bossPage.classList.toggle('hide')
-    setTimeout(() => {
-        removeBossPage()
-        showEndPage()
-    }, 5000)
+    // setTimeout(() => {
+    //     removeBossPage()
+    //     showEndPage()
+    // }, 10000)
 }
 
 function removeBossPage() {

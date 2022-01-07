@@ -74,19 +74,20 @@ h1 {
 }
 
 #boss1 {
-  -webkit-animation-delay: -0.125s;
+  -webkit-animation-delay: -3s;
 }
 
 .boss img {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  height: 100%;
+  top: -3%;
+  left: 26%;
   -webkit-animation-name: fade;
   -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 0.25s;
+  -webkit-animation-duration: 6s;
   animation-name: fade;
   animation-iteration-count: infinite;
-  animation-duration: 0.25s;
+  animation-duration: 6s;
 }
 
 @-webkit-keyframes fade {
