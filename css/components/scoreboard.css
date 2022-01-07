@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,100,200,800,900);
 
 .score,
 .final-score {
@@ -28,15 +29,16 @@
 }
 
 .add-points {
-  font-size: 250px;
-  font-family: 'Sulphur Point', sans-serif;
+  font-size: 220px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   margin-left: 20px;
   position: absolute;
-  left: 34%;
-  top: 30%;
+  left: 38%;
+  top: 35%;
   z-index: 2;
   /* color: #ffa45c; */
-  color: #ff304f;
+  color: #ff6262;
   user-select: none;
   pointer-events: none;
 }
