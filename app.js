@@ -141,22 +141,33 @@ function removeGamePage() {
 }
 
 function showBossPage() {
+
     bossPage.classList.toggle('hide')
 
     // Warning comes here
     const warning = new Audio('audio/megaman_warning.mp3')
     backgroundMusic.pause()
 
+    // wait for 2s and play warning sound
     setTimeout(() => {
         warning.play()
         document.querySelector('.warning').classList.toggle('hide')
     }, 2000)
 
+    // remove warning sign and pause warning audio
+    warning.pause()
+    document.querySelector('.warning').classList.add('animate__fadeOut')
+
+    // display enraged boss
+    setTimeout(() => {
+        document.querySelector('.boss').classList.toggle('hide')
+        spawnMoles()
+    }, 5000)
+
     // setTimeout(() => {
     //     removeBossPage()
     //     showEndPage()
-    // }, 10000)
-    spawnMoles()
+    // }, 17000)
 }
 
 function removeBossPage() {
@@ -238,5 +249,5 @@ function spawnMoles() {
         createMole(id)
         spawnMoles()
         id += 1
-    }, 1000)
+    }, 500)
 }
