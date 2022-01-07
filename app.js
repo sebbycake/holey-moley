@@ -229,31 +229,23 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
-}
+}   
 
 function createMole(id) {
     const divMole = document.createElement('div')
-    divMole.classList.add('mini-mole', 'animate__animated', 'animate__rotateIn', "mole" + id)
+    divMole.classList.add('mini-mole', 'zoom-in-zoom-out')
     const topPosition = Math.random() * 100
     const leftPosition = Math.random() * 100
     divMole.style.top = topPosition + "%" 
     divMole.style.left = leftPosition + "%"
-    divMole.onclick = () => {
-        divMole.remove()
-        // document.querySelector(".mole"+id).remove()
-        // console.log(".mole"+id)
-        // document.getElementById("register").outerHTML = "";
-    }
+    divMole.onclick = () => divMole.remove()
 
     document.body.append(divMole)
 }
 
 function spawnMoles() {
-    let id = 1;
     setTimeout(() => {
-        id += 1
-        // console.log("heyy",id)
-        createMole(id)
+        createMole()
         spawnMoles()
-    }, 500)
+    }, 2000)
 }
