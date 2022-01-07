@@ -1,34 +1,34 @@
 .mole {
-    background: url(../../images/mole.png) bottom center no-repeat;
-    background-size: 60%;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    height: 100%;
-    transition:all 0.4s;
+  background: url(../../images/mole.png) bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
 }
 
 .boss-mole {
-    background: url(../../images/mole.png) bottom center no-repeat;
-    background-size: 60%;
-    position: absolute;
-    /* top: 10  0%; */
-    width: 100%;
-    height: 100%;
-    z-index: 3;
+  background: url(../../images/mole.png) bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  /* top: 10  0%; */
+  width: 100%;
+  height: 100%;
+  z-index: 3;
 }
 
 .mini-mole {
-    background: url(../../images/mole-small.png) no-repeat;
-    position: absolute;
-    width: 128px;
-    height: 128px;
+  background: url(../../images/mole-small.png) no-repeat;
+  position: absolute;
+  width: 128px;
+  height: 128px;
 }
 
 .boss {
-    position: absolute;
-    height: 100%;
-    top: -3%;
-    left: 26%;
-    user-select: none;
-  }
+  position: absolute;
+  height: 100%;
+  top: -3%;
+  left: 26%;
+  user-select: none;
+}

@@ -1,38 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap');
 
-.score, .final-score {
-    background: rgba(255,255,255,0.2);
-    border-radius: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-    width: 100px;
-    margin: 0 auto; 
-    text-align: center;
-    font-size: 60px;
-    flex: 0 0 50%;
-    user-select: none;
-}
-   
+.score,
 .final-score {
-    background: rgba(255,255,255,0.2);
-    border-radius: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-    width: 90px;
-    margin: 0 auto; 
-    text-align: center;
-    font-size: 80px;
-    flex: 0 0 50%;
-    user-select: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  width: 100px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 60px;
+  flex: 0 0 50%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.final-score {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  width: 90px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 80px;
+  flex: 0 0 50%;
+  user-select: none;
+  pointer-events: none;
 }
 
 .add-points {
-    font-size: 250px;
-    font-family: 'Sulphur Point', sans-serif;
-    margin-left: 20px;
-    position: absolute;
-    left: 34%;
-    top: 30%;
-    z-index: 2;
-    /* color: #ffa45c; */
-    color: #ff304f;
-    user-select: none;
+  font-size: 250px;
+  font-family: 'Sulphur Point', sans-serif;
+  margin-left: 20px;
+  position: absolute;
+  left: 34%;
+  top: 30%;
+  z-index: 2;
+  /* color: #ffa45c; */
+  color: #ff304f;
+  user-select: none;
+  pointer-events: none;
 }
