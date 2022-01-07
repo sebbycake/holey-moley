@@ -222,21 +222,27 @@ function startTimer(duration, display) {
 
 function createMole(id) {
     const divMole = document.createElement('div')
-    divMole.classList.add('mini-mole', 'animate__animated', 'animate__zoomIn')
+    divMole.classList.add('mini-mole', 'animate__animated', "mole" + id)
     const topPosition = Math.random() * 100
     const leftPosition = Math.random() * 100
     divMole.style.top = topPosition + "%" 
     divMole.style.left = leftPosition + "%"
-    divMole.id = id
-    divMole.onclick = () => document.getElementById(id).remove()
+    divMole.onclick = () => {
+        divMole.remove()
+        // document.querySelector(".mole"+id).remove()
+        // console.log(".mole"+id)
+        // document.getElementById("register").outerHTML = "";
+    }
+
     document.body.append(divMole)
 }
 
 function spawnMoles() {
     let id = 1;
     setTimeout(() => {
+        id += 1
+        console.log("heyy",id)
         createMole(id)
         spawnMoles()
-        id += 1
     }, 1000)
 }
