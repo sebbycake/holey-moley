@@ -46,7 +46,8 @@ function randomMultipleHoles(holes) {
 }
 
 function peep() {
-    const time = randomTime(1000, 4000);
+    this.visibility = "visible";
+    const time = randomTime(200, 1000);
     const hole = randomHole(holes);
     hole.classList.add('up');
     setTimeout(() => {
@@ -106,8 +107,13 @@ function restartGame() {
 function hit(e) {
     if (!e.isTrusted) return; // cheater!
     score += 10;
-    this.classList.add('animate__jello')
-    this.parentNode.classList.remove('up');
+    this.classList.add('animate__zoomOutDown')
+    setTimeout(() => {
+        this.visibility = "hidden";
+        this.parentNode.classList.remove('up');
+        this.classList.remove('animate__zoomOutDown');
+    }, 1500)
+
     scoreBoard.textContent = score;
     smack.play();
     addPoints.classList.toggle('hide')

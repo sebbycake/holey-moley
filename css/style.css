@@ -72,3 +72,12 @@ h1 {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+
+/* .animate__animated {
+  --animate-duration: 0.5s;
+} */
+
+:root {
+  --animate-duration: 20s;
+  --animate-delay: 0s;
+}
