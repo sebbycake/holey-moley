@@ -46,10 +46,11 @@ function randomMultipleHoles(holes) {
 }
 
 function peep() {
-    this.visibility = "visible";
-    const time = randomTime(200, 1000);
+    const time = randomTime(500, 1500);
     const hole = randomHole(holes);
+
     hole.classList.add('up');
+    hole.children[0].style.visibility = "visible";
     setTimeout(() => {
         hole.classList.remove('up');
         if (!timeUp) peep();
@@ -109,7 +110,7 @@ function hit(e) {
     score += 10;
     this.classList.add('animate__zoomOutDown')
     setTimeout(() => {
-        this.visibility = "hidden";
+        this.style.visibility = "hidden";
         this.parentNode.classList.remove('up');
         this.classList.remove('animate__zoomOutDown');
     }, 1500)
