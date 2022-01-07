@@ -67,7 +67,7 @@ function startGame() {
         timeUp = true
         removeGamePage()
         showEndPage()
-    }, 62000)
+    }, 2000)
 }
 
 function restartGame() {
@@ -142,8 +142,8 @@ function recreateTimer() {
 document.body.addEventListener('mousemove', (e) => {
     // Only if game is started
     if (atGamePage) {
-        cursor.style.top = e.clientY + "px";
-        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + 100 + "px";
+        cursor.style.left = e.clientX + 100 + "px";
     }
 }, false);
 

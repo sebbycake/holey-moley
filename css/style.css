@@ -62,6 +62,8 @@ h1 {
   -webkit-transition: transform 0.1s ease-in-out;
   transition: transform 0.1s ease-in-out;
   transform-origin: bottom right;
+  z-index: 3;
+  user-select: none;
 }
 
 .cursor-clicked {
