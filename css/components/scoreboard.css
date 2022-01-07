@@ -25,12 +25,12 @@
 }
 
 .add-points {
-    font-size: 200px;
+    font-size: 250px;
     font-family: 'Sulphur Point', sans-serif;
     margin-left: 20px;
     position: absolute;
-    left: 37%;
-    top: 40%;
+    left: 34%;
+    top: 30%;
     z-index: 2;
     /* color: #ffa45c; */
     color: #ff304f;

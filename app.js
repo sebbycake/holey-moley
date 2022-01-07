@@ -46,7 +46,7 @@ function randomMultipleHoles(holes) {
 }
 
 function peep() {
-    const time = randomTime(200, 1000);
+    const time = randomTime(1000, 4000);
     const hole = randomHole(holes);
     hole.classList.add('up');
     setTimeout(() => {
@@ -106,6 +106,7 @@ function restartGame() {
 function hit(e) {
     if (!e.isTrusted) return; // cheater!
     score += 10;
+    this.classList.add('animate__jello')
     this.parentNode.classList.remove('up');
     scoreBoard.textContent = score;
     smack.play();
