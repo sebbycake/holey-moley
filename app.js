@@ -220,20 +220,23 @@ function startTimer(duration, display) {
     }, 1000);
 }
 
-function createMole() {
+function createMole(id) {
     const divMole = document.createElement('div')
     divMole.classList.add('mini-mole', 'animate__animated', 'animate__zoomIn')
     const topPosition = Math.random() * 100
     const leftPosition = Math.random() * 100
     divMole.style.top = topPosition + "%" 
     divMole.style.left = leftPosition + "%"
+    divMole.id = id
+    divMole.onclick = () => document.getElementById(id).remove()
     document.body.append(divMole)
-    divMole.onclick = () => console.log(this)
 }
 
 function spawnMoles() {
+    let id = 1;
     setTimeout(() => {
-        createMole()
+        createMole(id)
         spawnMoles()
+        id += 1
     }, 1000)
 }
