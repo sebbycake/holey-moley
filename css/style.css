@@ -73,11 +73,36 @@ h1 {
   transform: rotate(-45deg);
 }
 
-/* .animate__animated {
-  --animate-duration: 0.5s;
-} */
+#boss1 {
+  -webkit-animation-delay: -0.125s;
+}
+
+.boss img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-animation-name: fade;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 0.25s;
+  animation-name: fade;
+  animation-iteration-count: infinite;
+  animation-duration: 0.25s;
+}
+
+@-webkit-keyframes fade {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+@keyframes fade {
+  0% {opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 
 :root {
   --animate-duration: 20s;
   --animate-delay: 0s;
 }
+

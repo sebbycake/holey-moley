@@ -23,7 +23,9 @@ const gameOver = new Audio('audio/game_over.mp3')
 // cursor
 const cursor = document.querySelector('.cursor')
 
-
+// boss
+const boss1 = document.querySelector('.boss1')
+const boss2 = document.querySelector('.boss2')
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -197,3 +199,25 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
+
+// let bossToggle = false
+// function animateBoss(timestamp) {
+//     if (start === undefined) {
+//         start = timestamp;
+//     }
+
+//     bossToggle = !bossToggle
+
+//     const elapsed = timestamp - start
+//     if (bossToggle) {
+//         boss1.style.visibility = "hidden";
+//         boss2.style.visibility = "visible";
+//     } else {
+//         boss2.style.visibility = "hidden";
+//         boss1.style.visibility = "visible";
+//     }
+    
+//     window.requestAnimationFrame(animateBoss)
+// }
+
+// window.requestAnimationFrame(animateBoss)
