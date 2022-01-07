@@ -1,0 +1,24 @@
+button {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: #555555;
+    color: #fff;
+    width: 45%;
+    /* height: 20%; */
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+/* container for button to center it */
+.start-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

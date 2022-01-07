@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedy Moles: How Fast Can You Strike?</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+    <!-- Cursor -->
+    <img class='cursor' src="./images/hammer.png">
+
+    <!-- Displays the title and start game button -->
+    <div class="start-page">
+        <h1>Speedy Moles <img src="./images/mole-small.png" alt="" srcset=""></h1>
+
+        <div class="start-btn">
+            <button class="btn" onClick="startGame()">PRESS START</button>
+        </div>
+    </div>
+
+
+    <!-- Displays timer, game board and score -->
+    <div class="game-page hide animate__animated">
+        <div class="time">01:00</div>
+        <div class="score">0</div>
+        <div class="game">
+            <div class="hole hole1">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole2">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole3">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole4">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole5">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole6">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole7">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole8">
+                <div class="mole"></div>
+            </div>
+            <div class="hole hole9">
+                <div class="mole"></div>
+            </div>
+
+            <div class="add-points hide animate__animated animate__bounceIn">+10</div>
+
+        </div>
+    </div>
+
+    <!-- Displays score and restart game button -->
+    <div class="end-page hide">
+        <h1>You scored <span class="final-score">0</span> points</h1>
+        <div class="start-btn">
+            <button class="btn" onClick="restartGame()">RESTART GAME</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Federant&display=swap');
+
+@import 'components/hole.css';
+@import 'components/mole.css';
+@import 'components/scoreboard.css';
+@import 'components/timer.css';
+@import 'components/button.css';
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  /* background: #17b978; */
+  background: url('../images/background.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 10rem;
+  line-height: 1;
+  margin-bottom: 0;
+  /* font-family: 'Special Elite', cursive; */
+  font-family: 'Federant', cursive;
+  color: #4c221b;
+}
+
+.game {
+  cursor: none;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.hide {
+  display: none;
+}
+
+.start-page, .end-page {
+  margin-top: 170px;
+}
+
+.cursor {
+  position: absolute;
+  cursor: none;
+  -webkit-transition: transform 0.1s ease-in-out;
+  transition: transform 0.1s ease-in-out;
+  transform-origin: bottom right;
+}
+
+.cursor-clicked {
+  -ms-transform: rotate(-35deg);
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}

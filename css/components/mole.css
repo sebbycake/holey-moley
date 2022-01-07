@@ -1,0 +1,9 @@
+.mole {
+    background: url(../../images/mole.png) bottom center no-repeat;
+    background-size: 60%;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    transition:all 0.4s;
+}
