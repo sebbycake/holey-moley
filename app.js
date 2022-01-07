@@ -233,7 +233,7 @@ function startTimer(duration, display) {
 
 function createMole(id) {
     const divMole = document.createElement('div')
-    divMole.classList.add('mini-mole', 'animate__animated', "mole" + id)
+    divMole.classList.add('mini-mole', 'animate__animated', 'animate__rotateIn', "mole" + id)
     const topPosition = Math.random() * 100
     const leftPosition = Math.random() * 100
     divMole.style.top = topPosition + "%" 
@@ -252,8 +252,8 @@ function spawnMoles() {
     let id = 1;
     setTimeout(() => {
         id += 1
-        console.log("heyy",id)
+        // console.log("heyy",id)
         createMole(id)
         spawnMoles()
-    }, 1000)
+    }, 500)
 }
