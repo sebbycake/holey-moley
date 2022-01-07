@@ -23,6 +23,8 @@ const gameOver = new Audio('audio/game_over.mp3')
 // cursor
 const cursor = document.querySelector('.cursor')
 
+
+
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -154,6 +156,7 @@ window.addEventListener('mousemove', (e) => {
     if (atGamePage) {
         cursor.style.top = e.clientY - 140 + "px";
         cursor.style.left = e.clientX + "px";
+        document.body.style.cursor = "crosshair";
     }
 
     if (atGameOver || atGameStart) {
@@ -161,11 +164,11 @@ window.addEventListener('mousemove', (e) => {
     } else {
         cursor.style.visibility = "visible";
     }
+
 }, false);
 
 // Make it play an animation when clicked
 document.body.addEventListener('click', (e) => {
-    // cursor.classList.remove('cursor')
     cursor.classList.add('cursor-clicked')
     setTimeout(() => cursor.classList.remove('cursor-clicked'), 50);
 }, false);

@@ -3,7 +3,7 @@
     overflow: hidden;
     position: relative;
 }
-  
+
 .hole:after {
     display: block;
     background: url(../../images/dirt-pile.svg) bottom center no-repeat;
