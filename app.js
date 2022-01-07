@@ -7,6 +7,7 @@ let atGameOver = false;
 
 const startPage = document.querySelector('.start-page')
 const gamePage = document.querySelector('.game-page')
+const bossPage = document.querySelector('.boss-page')
 const endPage = document.querySelector('.end-page')
 
 const holes = document.querySelectorAll('.hole');
@@ -16,7 +17,7 @@ const finalScore = document.querySelector('.final-score');
 const moles = document.querySelectorAll('.mole');
 const startGameBtn = document.querySelector('.btn');
 
-const backgroundMusic = new Audio('audio/background_music_cut.mp3')
+const backgroundMusic = new Audio('audio/background_music_2.mp3')
 const smack = new Audio('audio/smack.mp3')
 const gameOver = new Audio('audio/game_over.mp3')
 
@@ -61,7 +62,7 @@ function startGame() {
     atGameStart = false
     atGamePage = true
     atGameOver = false
-    // backgroundMusic.play()
+    backgroundMusic.play()
     timeUp = false;
     score = 0;
     const displayTime = document.querySelector('.time');
@@ -76,14 +77,14 @@ function startGame() {
         atGamePage = false
         atGameOver = true
         removeGamePage()
-        showEndPage()
-    }, 62000)
+        showBossPage()
+    }, 5000)
 }
 
 function restartGame() {
     atGamePage = true
     atGameOver = false
-    // backgroundMusic.play()
+    backgroundMusic.play()
     scoreBoard.textContent = 0;
     finalScore.textContent = 0;
     timeUp = false;
@@ -118,13 +119,9 @@ function hit(e) {
     scoreBoard.textContent = score;
     smack.play();
     addPoints.classList.toggle('hide')
-    // gamePage.classList.add('animate__heartBeat')
     setTimeout(() => {
         addPoints.classList.toggle('hide')
-        // gamePage.classList.remove('animate__heartBeat')
     }, 700)
-    // gamePage.classList.add('animate__animated')
-    // gamePage.classList.add('animate__tada')
 }
 
 moles.forEach(mole => mole.addEventListener('click', hit));
@@ -139,6 +136,18 @@ function showGamePage() {
 
 function removeGamePage() {
     gamePage.classList.toggle('hide')
+}
+
+function showBossPage() {
+    bossPage.classList.toggle('hide')
+    setTimeout(() => {
+        removeBossPage()
+        showEndPage()
+    }, 5000)
+}
+
+function removeBossPage() {
+    bossPage.classList.toggle('hide')
 }
 
 function showEndPage() {
