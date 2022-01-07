@@ -49,7 +49,7 @@ function randomMultipleHoles(holes) {
 }
 
 function peep() {
-    const time = randomTime(500, 1500);
+    const time = randomTime(200, 800);
     const hole = randomHole(holes);
 
     hole.classList.add('up');
@@ -80,7 +80,7 @@ function startGame() {
         atGameOver = true
         removeGamePage()
         showBossPage()
-    }, 1000)
+    }, 62000)
     }
 
 function restartGame() {
@@ -119,7 +119,7 @@ function hit(e) {
     }, 1500)
 
     scoreBoard.textContent = score;
-    smack.play();
+    smack.cloneNode(true).play();
     addPoints.classList.toggle('hide')
     setTimeout(() => {
         addPoints.classList.toggle('hide')
@@ -161,13 +161,16 @@ function showBossPage() {
     // display enraged boss
     setTimeout(() => {
         document.querySelector('.boss').classList.toggle('hide')
-        spawnMoles()
+        const inst = document.createElement('h1')
+        inst.textContent = "Kill all the moles to win this final battle before it floods your screen! 10 seconds is all you got."
+        inst.classList.add('boss-page-inst')
+        bossPage.append(inst)
     }, 5000)
 
-    // setTimeout(() => {
-    //     removeBossPage()
-    //     showEndPage()
-    // }, 17000)
+    setTimeout(() => {
+        removeBossPage()
+        showEndPage()
+    }, 17000)
 }
 
 function removeBossPage() {
@@ -238,8 +241,10 @@ function createMole(id) {
     const leftPosition = Math.random() * 100
     divMole.style.top = topPosition + "%" 
     divMole.style.left = leftPosition + "%"
-    divMole.onclick = () => divMole.remove()
-
+    divMole.onclick = () => {
+        smack.cloneNode(true).play();
+        divMole.remove()
+    }
     document.body.append(divMole)
 }
 
@@ -247,5 +252,5 @@ function spawnMoles() {
     setTimeout(() => {
         createMole()
         spawnMoles()
-    }, 2000)
+    }, 500)
 }

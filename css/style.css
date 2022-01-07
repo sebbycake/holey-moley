@@ -73,13 +73,6 @@ h1 {
   transform: rotate(-45deg);
 }
 
-.boss {
-  position: absolute;
-  height: 100%;
-  top: -3%;
-  left: 26%;
-}
-
 :root {
   --animate-duration: 20s;
   --animate-delay: 0s;
@@ -95,7 +88,7 @@ h1 {
 
 /* Moles coming at you */
 .zoom-in-zoom-out {
-  animation: zoom-in-zoom-out 60s ease-out infinite;
+  animation: zoom-in-zoom-out 40s ease-out infinite;
 }
 
 @keyframes zoom-in-zoom-out {
@@ -111,5 +104,17 @@ h1 {
 }
 
 .animate__animated.animate__fadeIn {
-  --animate-duration: 7s;
+  --animate-duration: 3s;
+}
+
+.animate__animated.animate__fadeOut {
+  --animate-duration: 5s;
+}
+
+.boss-page-inst {
+  position: absolute;
+  font-size: 30px;
+  width: 50%;
+  color: red;
+  user-select: none;
 }
