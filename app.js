@@ -208,25 +208,3 @@ function startTimer(duration, display) {
         }
     }, 1000);
 }
-
-// let bossToggle = false
-// function animateBoss(timestamp) {
-//     if (start === undefined) {
-//         start = timestamp;
-//     }
-
-//     bossToggle = !bossToggle
-
-//     const elapsed = timestamp - start
-//     if (bossToggle) {
-//         boss1.style.visibility = "hidden";
-//         boss2.style.visibility = "visible";
-//     } else {
-//         boss2.style.visibility = "hidden";
-//         boss1.style.visibility = "visible";
-//     }
-    
-//     window.requestAnimationFrame(animateBoss)
-// }
-
-// window.requestAnimationFrame(animateBoss)
