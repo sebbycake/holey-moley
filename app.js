@@ -1,7 +1,9 @@
 let lastHole;
 let timeUp = false;
 let score = 0;
-let atGamePage = false
+let atGameStart = true;
+let atGamePage = false;
+let atGameOver = false;
 
 const startPage = document.querySelector('.start-page')
 const gamePage = document.querySelector('.game-page')
@@ -52,7 +54,9 @@ function peep() {
 }
 
 function startGame() {
+    atGameStart = false
     atGamePage = true
+    atGameOver = false
     // backgroundMusic.play()
     timeUp = false;
     score = 0;
@@ -65,12 +69,16 @@ function startGame() {
     setTimeout(() => {
         gameOver.play()
         timeUp = true
+        atGamePage = false
+        atGameOver = true
         removeGamePage()
         showEndPage()
-    }, 2000)
+    }, 62000)
 }
 
 function restartGame() {
+    atGamePage = true
+    atGameOver = false
     // backgroundMusic.play()
     scoreBoard.textContent = 0;
     finalScore.textContent = 0;
@@ -84,6 +92,8 @@ function restartGame() {
     removeEndPage()
     showGamePage()
     setTimeout(() => {
+        atGamePage = false
+        atGameOver = true
         gameOver.play()
         timeUp = true
         removeGamePage()
@@ -139,11 +149,17 @@ function recreateTimer() {
 }
 
 // Set the hammer to follow the mouse
-document.body.addEventListener('mousemove', (e) => {
+window.addEventListener('mousemove', (e) => {
     // Only if game is started
     if (atGamePage) {
-        cursor.style.top = e.clientY + 100 + "px";
-        cursor.style.left = e.clientX + 100 + "px";
+        cursor.style.top = e.clientY - 140 + "px";
+        cursor.style.left = e.clientX + "px";
+    }
+
+    if (atGameOver || atGameStart) {
+        cursor.style.visibility = "hidden";
+    } else {
+        cursor.style.visibility = "visible";
     }
 }, false);
 
@@ -151,7 +167,7 @@ document.body.addEventListener('mousemove', (e) => {
 document.body.addEventListener('click', (e) => {
     // cursor.classList.remove('cursor')
     cursor.classList.add('cursor-clicked')
-    setTimeout(() => cursor.classList.remove('cursor-clicked'), 100);
+    setTimeout(() => cursor.classList.remove('cursor-clicked'), 50);
 }, false);
 
 function startTimer(duration, display) {

@@ -27,6 +27,7 @@ html {
 body {
   padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 h1 {
@@ -40,7 +41,7 @@ h1 {
 }
 
 .game {
-  cursor: none;
+  cursor: crosshair;
   width: 600px;
   height: 400px;
   display: flex;
@@ -58,16 +59,16 @@ h1 {
 
 .cursor {
   position: absolute;
-  cursor: none;
-  -webkit-transition: transform 0.1s ease-in-out;
-  transition: transform 0.1s ease-in-out;
+  cursor: crosshair;
+  -webkit-transition: transform 0.05s ease-in-out;
+  transition: transform 0.05s ease-in-out;
   transform-origin: bottom right;
   z-index: 3;
   user-select: none;
 }
 
 .cursor-clicked {
-  -ms-transform: rotate(-35deg);
-  -webkit-transform: rotate(-35deg);
-  transform: rotate(-35deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
