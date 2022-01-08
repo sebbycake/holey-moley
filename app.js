@@ -29,7 +29,7 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Time before end game
-const timeBeforeFirstPartEnds = 10000
+const timeBeforeFirstPartEnds = 1000
 
 // Mole logic for first part
 
