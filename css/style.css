@@ -80,6 +80,7 @@ h1 {
 :root {
   --animate-duration: 20s;
   --animate-delay: 0s;
+  --speed: 40s;
 }
 
 /* For warning */
@@ -92,7 +93,7 @@ h1 {
 
 /* Moles coming at you */
 .zoom-in-zoom-out {
-  animation: zoom-in-zoom-out 40s ease-out infinite;
+  animation: zoom-in-zoom-out var(--speed) ease-out infinite;
 }
 
 @keyframes zoom-in-zoom-out {

@@ -42,6 +42,20 @@ const lowestMaxAppearTime = 700
 // Difficulty multiplier
 const difficultyMultiplier = 0.95
 
+// Logic for second part
+var spawnMoleRate = 1000
+
+const lowestMoleRate = 100
+const difficultyMultiplierBoss = 0.95
+
+// current speed is 40s
+const speedMultiplier = 0.98
+const lowestSpeed = 10
+var currentSpeed = 40;
+
+var isSpawnMoles = true
+
+
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -115,6 +129,21 @@ function restartGame() {
     }, timeBeforeFirstPartEnds)
 }
 
+function startBossFight() {
+    document.querySelector('.boss').classList.toggle('hide')
+    const inst = document.createElement('h1')
+    inst.style.backgroundColor = 'white'
+    inst.style.borderRadius = '10px'
+    inst.textContent = "You killed her babies and now the Mole Witch wants revenge! Kill all the moles before you become mole-food!"
+    inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
+    bossPage.append(inst)
+    spawnMoles()
+
+    const timer = document.querySelector('.time2');
+    timer.classList.remove('hide')
+    startTimer(30, timer);
+}
+
 function hit(e) {
     if (!e.isTrusted) return; // cheater!
     score += 10;
@@ -172,19 +201,22 @@ function showBossPage() {
 
     // display enraged boss
     setTimeout(() => {
-        document.querySelector('.boss').classList.toggle('hide')
-        const inst = document.createElement('h1')
-        inst.style.backgroundColor = 'white'
-        inst.style.borderRadius = '10px'
-        inst.textContent = "Kill all the moles to win this final battle before it floods your screen! 10 seconds is all you got."
-        inst.classList.add('boss-page-inst')
-        bossPage.append(inst)
-    }, 6000)
+        startBossFight()
 
-    setTimeout(() => {
-        removeBossPage()
-        showEndPage()
-    }, 170000)
+        // End the game after 10s
+        setTimeout(() => {
+            gameOver.play()
+            removeBossPage()
+            showEndPage()
+            stopMoles()
+        }, 10000)
+    }, 6000)
+}
+
+function stopMoles() {
+    // clear all moles and stop them from spawning
+    document.querySelectorAll('.mini-mole').forEach (mole => mole.remove())
+    isSpawnMoles = false
 }
 
 function removeBossPage() {
@@ -201,9 +233,9 @@ function removeEndPage() {
     endPage.classList.toggle('hide')
 }
 
-function recreateTimer() {
+function recreateTimer(content="01:00") {
     const timer = document.createElement('div')
-    timer.textContent = "01:00"
+    timer.textContent = content
     timer.classList.add('time')
     gamePage.prepend(timer)
     return timer
@@ -245,9 +277,27 @@ function startTimer(duration, display) {
             timer = duration;
         }
     }, 1000);
-}   
+}
 
-function createMole(id) {
+let root = document.querySelector(':root')
+
+
+function bossMoleHit() {
+    smack.cloneNode(true).play();
+    spawnMoleRate = (spawnMoleRate - lowestMoleRate) * difficultyMultiplierBoss + lowestMoleRate
+    var rs = getComputedStyle(root);
+    const speed = rs.getPropertyValue('--speed')
+    const speedInt = parseInt(speed.slice(0,-1))
+    console.log(speedInt);
+    currentSpeed = (currentSpeed - lowestSpeed) * speedMultiplier + lowestSpeed
+    const speedCss = currentSpeed + 's'
+    console.log(speedCss)
+
+    root.style.setProperty('--speed', speedCss)
+}
+
+
+function createMole() {
     const divMole = document.createElement('div')
     divMole.classList.add('mini-mole', 'zoom-in-zoom-out')
     const topPosition = Math.random() * 100
@@ -255,15 +305,17 @@ function createMole(id) {
     divMole.style.top = topPosition + "%" 
     divMole.style.left = leftPosition + "%"
     divMole.onclick = () => {
-        smack.cloneNode(true).play();
         divMole.remove()
+        bossMoleHit()
     }
     document.body.append(divMole)
 }
 
 function spawnMoles() {
     setTimeout(() => {
-        createMole()
-        spawnMoles()
-    }, 500)
+        if (isSpawnMoles) {
+            createMole()
+            spawnMoles()
+        }
+    }, spawnMoleRate)
 }

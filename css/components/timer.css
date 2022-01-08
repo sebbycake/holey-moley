@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 .time {
-    font-size: 70px;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    user-select: none;
+  font-size: 70px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  user-select: none;
+}
+
+.time2 {
+  font-size: 70px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  user-select: none;
+  position: absolute;
+  margin-right: 0;
+  margin-bottom: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
 }
