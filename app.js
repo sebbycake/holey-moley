@@ -33,7 +33,10 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Default values of timing
-const timeBeforeFirstPartEnds = 1000
+const timeBeforeFirstPartEnds = 62000
+// const timeBeforeFirstPartEnds = 1000
+const warningTime = 4500
+// const warningTime = 100
 
 
 // Mole logic for first part
@@ -54,7 +57,7 @@ const lowestMoleRate = 100
 const difficultyMultiplierBoss = 0.95
 
 // current speed is 40s
-const speedMultiplier = 0.98
+const speedMultiplier = 0.96
 const lowestSpeed = 10
 var currentSpeed = 40;
 
@@ -88,6 +91,7 @@ function peep() {
     hole.children[0].style.visibility = "visible";
     setTimeout(() => {
         hole.classList.remove('up');
+        hole.children[0].style.visibility = "hidden";
         if (!timeUp) peep();
     }, time);
 }
@@ -149,12 +153,22 @@ function startBossFight() {
 
         inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
 
-
+        gameState = 1
         bossPage.append(inst)
         spawnMoles()
         const timer = document.querySelector('.time2');
         timer.classList.remove('hide')
         startTimer(30, timer);
+
+        // End the game after 30s
+        setTimeout(() => {
+            bossMusic.pause()
+            gameOver.play()
+            removeBossPage()
+            showEndPage()
+            stopMoles()
+        }, 32000)
+
     }, 4000)
 }
 
@@ -223,24 +237,15 @@ function showBossPage() {
         // After 4s, fade out the warning screen
         setTimeout(() => {
             warning.pause()
-            bossMusic.play()
             document.querySelector('.warning').classList.add('animate__fadeOut')
             // display enraged boss
             setTimeout(() => {
                 startBossFight()
+                bossMusic.play()
 
-                // End the game after 10s
-                setTimeout(() => {
-                    bossMusic.pause()
-                    gameOver.play()
-                    removeBossPage()
-                    showEndPage()
-                    stopMoles()
-                }, 10000)
+
             }, 2000)
-
-
-        }, 4500)
+        }, warningTime)
     }, 2000)
 
 
