@@ -22,6 +22,7 @@ const startGameBtn = document.querySelector('.btn');
 
 const backgroundMusic = new Audio('audio/background_music_2.mp3')
 const smack = new Audio('audio/smack.mp3')
+const bossMusic = new Audio('audio/boss_music.mp3')
 const gameOver = new Audio('audio/game_over.mp3')
 
 // cursor
@@ -108,7 +109,7 @@ function startGame() {
         removeGamePage()
         showBossPage()
     }, timeBeforeFirstPartEnds)
-    }
+}
 
 function restartGame() {
     gameState = 1
@@ -138,7 +139,7 @@ function restartGame() {
 function startBossFight() {
     document.querySelector('.boss').classList.toggle('hide')
     document.body.classList.add('animate__animated', 'animate__shakeX')
-    
+
     setTimeout(() => {
         const inst = document.createElement('h1')
         inst.style.backgroundColor = 'white'
@@ -218,6 +219,8 @@ function showBossPage() {
 
         // After 4s, fade out the warning screen
         setTimeout(() => {
+            warning.pause()
+            bossMusic.play()
             document.querySelector('.warning').classList.add('animate__fadeOut')
             // display enraged boss
             setTimeout(() => {
@@ -225,6 +228,7 @@ function showBossPage() {
 
                 // End the game after 10s
                 setTimeout(() => {
+                    bossMusic.pause()
                     gameOver.play()
                     removeBossPage()
                     showEndPage()
@@ -260,7 +264,7 @@ function removeEndPage() {
     endPage.classList.toggle('hide')
 }
 
-function recreateTimer(content="01:00") {
+function recreateTimer(content = "01:00") {
     const timer = document.createElement('div')
     timer.textContent = content
     timer.classList.add('time')
@@ -315,20 +319,13 @@ function adjustBossFightDifficulty() {
     spawnMoleRate = (spawnMoleRate - lowestMoleRate) * difficultyMultiplierBoss + lowestMoleRate
     var rs = getComputedStyle(root);
     const speed = rs.getPropertyValue('--speed')
-    const speedInt = parseInt(speed.slice(0,-1))
+    const speedInt = parseInt(speed.slice(0, -1))
     // console.log(speedInt);
     currentSpeed = (currentSpeed - lowestSpeed) * speedMultiplier + lowestSpeed
     const speedCss = currentSpeed + 's'
     // console.log(speedCss)
 
     root.style.setProperty('--speed', speedCss)
-
-    // display boss score as moles are hit
-    bossPoints.textContent = bossScore
-    bossPoints.classList.toggle('hide')
-    setTimeout(() => {
-        bossPoints.classList.toggle('hide')
-    }, 300)
 
 }
 
@@ -339,6 +336,7 @@ function bossMoleHit() {
     smack.cloneNode(true).play();
     // increase boss score
     bossScore += 100
+    // display boss score as moles are hit
     bossPoints.textContent = bossScore
     bossPoints.classList.toggle('hide')
     setTimeout(() => {
@@ -352,7 +350,7 @@ function createMole() {
     divMole.classList.add('mini-mole', 'zoom-in-zoom-out')
     const topPosition = Math.random() * 100
     const leftPosition = Math.random() * 100
-    divMole.style.top = topPosition + "%" 
+    divMole.style.top = topPosition + "%"
     divMole.style.left = leftPosition + "%"
     divMole.onclick = () => {
         divMole.remove()

@@ -127,6 +127,6 @@ h1 {
   pointer-events: none;
 }
 
-.animate__animated.animate__zoomIn {
+/* .animate__animated.animate__zoomIn {
   --animate-duration: 10s;
-}
+} */
