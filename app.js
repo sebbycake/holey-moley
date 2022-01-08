@@ -138,7 +138,8 @@ function restartGame() {
 function startBossFight() {
     document.querySelector('.boss').classList.toggle('hide')
     document.body.classList.add('animate__animated', 'animate__shakeX')
-    
+    shakeBackground(0)
+
     setTimeout(() => {
         const inst = document.createElement('h1')
         inst.style.backgroundColor = 'white'
@@ -147,7 +148,6 @@ function startBossFight() {
 
         inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
 
-        shakeBackground(0)
 
         bossPage.append(inst)
         spawnMoles()
@@ -158,13 +158,16 @@ function startBossFight() {
 }
 
 function shakeBackground(iterations) {
-    document.body.style.backgroundSize = '100%'
+    document.body.style.backgroundSize = '102%'
     setTimeout(() => {
-        document.body.style.backgroundSize = '110%'
-        if (iterations < 20) {
-            shakeBackground(iterations + 1)
+        if (iterations < 7) {
+            document.body.style.backgroundSize = '100%'
+            setTimeout(() => {
+                shakeBackground(iterations + 1)
+                console.log(iterations)
+            }, 50)
         }
-    }, 500)
+    }, 50)
 }
 
 function hit(e) {
