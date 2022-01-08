@@ -28,8 +28,9 @@ const cursor = document.querySelector('.cursor')
 const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
-// Time before end game
+// Default values of timing
 const timeBeforeFirstPartEnds = 1000
+
 
 // Mole logic for first part
 
@@ -55,7 +56,6 @@ var currentSpeed = 40;
 
 var isSpawnMoles = true
 
-
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -70,11 +70,11 @@ function randomHole(holes) {
     return hole;
 }
 
-function randomMultipleHoles(holes) {
-    // multiple moles can spawn at the same time
-    const maxMoles = Math.floor(Math.random() * holes.length);
-    console.log(maxMoles)
-}
+// function randomMultipleHoles(holes) {
+//     // multiple moles can spawn at the same time
+//     const maxMoles = Math.floor(Math.random() * holes.length);
+//     console.log(maxMoles)
+// }
 
 function peep() {
     const time = randomTime(minAppearTime, maxAppearTime);
@@ -215,7 +215,7 @@ function showBossPage() {
 
 function stopMoles() {
     // clear all moles and stop them from spawning
-    document.querySelectorAll('.mini-mole').forEach (mole => mole.remove())
+    document.querySelectorAll('.mini-mole').forEach(mole => mole.remove())
     isSpawnMoles = false
 }
 
@@ -276,24 +276,31 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             timer = duration;
         }
+
+        // if game state is 2 (at boss fight) then adjust difficulty every second
+        if (gameState === 2) {
+            adjustBossFightDifficulty()
+        }
     }, 1000);
 }
 
-let root = document.querySelector(':root')
-
-
-function bossMoleHit() {
-    smack.cloneNode(true).play();
+function adjustBossFightDifficulty() {
     spawnMoleRate = (spawnMoleRate - lowestMoleRate) * difficultyMultiplierBoss + lowestMoleRate
     var rs = getComputedStyle(root);
     const speed = rs.getPropertyValue('--speed')
     const speedInt = parseInt(speed.slice(0,-1))
-    console.log(speedInt);
+    // console.log(speedInt);
     currentSpeed = (currentSpeed - lowestSpeed) * speedMultiplier + lowestSpeed
     const speedCss = currentSpeed + 's'
-    console.log(speedCss)
+    // console.log(speedCss)
 
     root.style.setProperty('--speed', speedCss)
+}
+
+let root = document.querySelector(':root')
+
+function bossMoleHit() {
+    smack.cloneNode(true).play();
 }
 
 

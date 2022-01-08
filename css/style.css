@@ -89,6 +89,8 @@ h1 {
   top: 20%;
   left: 4%;
   width: 96%;
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Moles coming at you */
@@ -122,4 +124,5 @@ h1 {
   width: 50%;
   color: red;
   user-select: none;
+  pointer-events: none;
 }
