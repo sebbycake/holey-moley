@@ -1,6 +1,7 @@
 let lastHole;
 let timeUp = false;
 let score = 0;
+let bossScore = 0;
 
 // 0 => start, 1 => during game, 2 => game over
 let gameState = 0
@@ -13,7 +14,9 @@ const endPage = document.querySelector('.end-page')
 const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelector('.score');
 const addPoints = document.querySelector('.add-points')
+const bossPoints = document.querySelector('.boss-points')
 const finalScore = document.querySelector('.final-score');
+const finalBossScore = document.querySelector('.boss-score')
 const moles = document.querySelectorAll('.mole');
 const startGameBtn = document.querySelector('.btn');
 
@@ -112,8 +115,10 @@ function restartGame() {
     backgroundMusic.play()
     scoreBoard.textContent = 0;
     finalScore.textContent = 0;
+    finalBossScore.textContent = 0;
     timeUp = false;
     score = 0;
+    bossScore = 0
     const displayTime = document.querySelector('.time');
     displayTime.remove()
     const timer = recreateTimer()
@@ -124,8 +129,9 @@ function restartGame() {
     setTimeout(() => {
         gameOver.play()
         timeUp = true
-        removeGamePage()
-        showEndPage()
+        removeEndPage()
+        showGamePage()
+        startGame()
     }, timeBeforeFirstPartEnds)
 }
 
@@ -225,6 +231,7 @@ function removeBossPage() {
 
 function showEndPage() {
     finalScore.textContent = score;
+    finalBossScore.textContent = bossScore;
     endPage.classList.toggle('hide')
     gameState = 2
 }
@@ -283,7 +290,10 @@ let root = document.querySelector(':root')
 
 
 function bossMoleHit() {
+    // play smack audio
     smack.cloneNode(true).play();
+    // increase boss score
+    bossScore += 100
     spawnMoleRate = (spawnMoleRate - lowestMoleRate) * difficultyMultiplierBoss + lowestMoleRate
     var rs = getComputedStyle(root);
     const speed = rs.getPropertyValue('--speed')
@@ -292,8 +302,15 @@ function bossMoleHit() {
     currentSpeed = (currentSpeed - lowestSpeed) * speedMultiplier + lowestSpeed
     const speedCss = currentSpeed + 's'
     console.log(speedCss)
-
     root.style.setProperty('--speed', speedCss)
+
+    // display boss score as moles are hit
+    bossPoints.textContent = bossScore
+    bossPoints.classList.toggle('hide')
+    setTimeout(() => {
+        bossPoints.classList.toggle('hide')
+    }, 300)
+
 }
 
 
