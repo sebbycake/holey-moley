@@ -28,6 +28,20 @@ const cursor = document.querySelector('.cursor')
 const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
+// Time before end game
+const timeBeforeFirstPartEnds = 62000
+
+// Mole logic for first part
+
+// Current difficulty
+var minAppearTime = 500;
+var maxAppearTime = 1500;
+// Hardest difficulty
+const lowestMinAppearTime = 200
+const lowestMaxAppearTime = 700
+// Difficulty multiplier
+const difficultyMultiplier = 0.95
+
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -49,7 +63,7 @@ function randomMultipleHoles(holes) {
 }
 
 function peep() {
-    const time = randomTime(200, 800);
+    const time = randomTime(minAppearTime, maxAppearTime);
     const hole = randomHole(holes);
 
     hole.classList.add('up');
@@ -80,7 +94,7 @@ function startGame() {
         atGameOver = true
         removeGamePage()
         showBossPage()
-    }, 62000)
+    }, timeBeforeFirstPartEnds)
     }
 
 function restartGame() {
@@ -105,12 +119,17 @@ function restartGame() {
         timeUp = true
         removeGamePage()
         showEndPage()
-    }, 62000)
+    }, timeBeforeFirstPartEnds)
 }
 
 function hit(e) {
     if (!e.isTrusted) return; // cheater!
     score += 10;
+    // Difficulty increase wrt to how many moles you hit
+    minAppearTime = (minAppearTime - lowestMinAppearTime) * difficultyMultiplier + lowestMinAppearTime
+    maxAppearTime = (maxAppearTime - lowestMaxAppearTime) * difficultyMultiplier + lowestMaxAppearTime
+    console.log(minAppearTime, maxAppearTime)
+
     this.classList.add('animate__zoomOutDown')
     setTimeout(() => {
         this.style.visibility = "hidden";
@@ -141,7 +160,6 @@ function removeGamePage() {
 }
 
 function showBossPage() {
-
     bossPage.classList.toggle('hide')
 
     // Warning comes here
