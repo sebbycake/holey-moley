@@ -131,17 +131,34 @@ function restartGame() {
 
 function startBossFight() {
     document.querySelector('.boss').classList.toggle('hide')
-    const inst = document.createElement('h1')
-    inst.style.backgroundColor = 'white'
-    inst.style.borderRadius = '10px'
-    inst.textContent = "You killed her babies and now the Mole Witch wants revenge! Kill all the moles before you become mole-food!"
-    inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
-    bossPage.append(inst)
-    spawnMoles()
+    document.body.classList.add('animate__animated', 'animate__shakeX')
+    
+    setTimeout(() => {
+        const inst = document.createElement('h1')
+        inst.style.backgroundColor = 'white'
+        inst.style.borderRadius = '10px'
+        inst.textContent = "You killed her babies and now the Mole Witch wants revenge! Kill all the moles before you become mole-food!"
 
-    const timer = document.querySelector('.time2');
-    timer.classList.remove('hide')
-    startTimer(30, timer);
+        inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
+
+        shakeBackground(0)
+
+        bossPage.append(inst)
+        spawnMoles()
+        const timer = document.querySelector('.time2');
+        timer.classList.remove('hide')
+        startTimer(30, timer);
+    }, 4000)
+}
+
+function shakeBackground(iterations) {
+    document.body.style.backgroundSize = '100%'
+    setTimeout(() => {
+        document.body.style.backgroundSize = '110%'
+        if (iterations < 20) {
+            shakeBackground(iterations + 1)
+        }
+    }, 500)
 }
 
 function hit(e) {
@@ -196,21 +213,24 @@ function showBossPage() {
         // After 4s, fade out the warning screen
         setTimeout(() => {
             document.querySelector('.warning').classList.add('animate__fadeOut')
-        }, 4000)
+            // display enraged boss
+            setTimeout(() => {
+                startBossFight()
+
+                // End the game after 10s
+                setTimeout(() => {
+                    gameOver.play()
+                    removeBossPage()
+                    showEndPage()
+                    stopMoles()
+                }, 10000)
+            }, 2000)
+
+
+        }, 4500)
     }, 2000)
 
-    // display enraged boss
-    setTimeout(() => {
-        startBossFight()
 
-        // End the game after 10s
-        setTimeout(() => {
-            gameOver.play()
-            removeBossPage()
-            showEndPage()
-            stopMoles()
-        }, 10000)
-    }, 6000)
 }
 
 function stopMoles() {

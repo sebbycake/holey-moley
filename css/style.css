@@ -11,12 +11,6 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  /* background: #17b978; */
-  background: url('../images/background.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
 }
 
 *,
@@ -30,6 +24,12 @@ body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  /* background: #17b978; */
+  background: url('../images/background.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
@@ -125,4 +125,8 @@ h1 {
   color: red;
   user-select: none;
   pointer-events: none;
+}
+
+.animate__animated.animate__zoomIn {
+  --animate-duration: 10s;
 }
