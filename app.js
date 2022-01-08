@@ -36,7 +36,7 @@ const timeBeforeFirstPartEnds = 62000
 // Current difficulty
 var minAppearTime = 500;
 var maxAppearTime = 1500;
-// Hardest difficulty
+// Hardest difficulty possible
 const lowestMinAppearTime = 200
 const lowestMaxAppearTime = 700
 // Difficulty multiplier
