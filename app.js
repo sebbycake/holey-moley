@@ -213,6 +213,7 @@ function recreateTimer() {
 window.addEventListener('mousemove', (e) => {
     // Only if game is started
     if (gameState === 1) {
+        cursor.classList.remove('hide')
         cursor.style.top = e.clientY - 140 + "px";
         cursor.style.left = e.clientX + "px";
         document.body.style.cursor = "crosshair";
