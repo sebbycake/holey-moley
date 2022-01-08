@@ -34,9 +34,7 @@ const boss2 = document.querySelector('.boss2')
 
 // Default values of timing
 const timeBeforeFirstPartEnds = 62000
-// const timeBeforeFirstPartEnds = 1000
-const warningTime = 4500
-// const warningTime = 100
+const warningTime = 5500
 
 
 // Mole logic for first part
@@ -108,7 +106,6 @@ function startGame() {
     removeStartPage()
     showGamePage()
     setTimeout(() => {
-        gameOver.play()
         timeUp = true
         removeGamePage()
         showBossPage()
