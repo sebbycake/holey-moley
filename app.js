@@ -33,8 +33,8 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Default values of timing
-const timeBeforeFirstPartEnds = 1000
-const warningTime = 1000
+const timeBeforeFirstPartEnds = 62000
+const warningTime = 5500
 
 // Mole logic for first part
 
