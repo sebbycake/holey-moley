@@ -29,7 +29,7 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Time before end game
-const timeBeforeFirstPartEnds = 62000
+const timeBeforeFirstPartEnds = 1000
 
 // Mole logic for first part
 
@@ -128,7 +128,7 @@ function hit(e) {
     // Difficulty increase wrt to how many moles you hit
     minAppearTime = (minAppearTime - lowestMinAppearTime) * difficultyMultiplier + lowestMinAppearTime
     maxAppearTime = (maxAppearTime - lowestMaxAppearTime) * difficultyMultiplier + lowestMaxAppearTime
-    console.log(minAppearTime, maxAppearTime)
+    // console.log(minAppearTime, maxAppearTime)
 
     this.classList.add('animate__zoomOutDown')
     setTimeout(() => {
@@ -170,25 +170,28 @@ function showBossPage() {
     setTimeout(() => {
         warning.play()
         document.querySelector('.warning').classList.toggle('hide')
-    }, 2000)
 
-    // remove warning sign and pause warning audio
-    warning.pause()
-    document.querySelector('.warning').classList.add('animate__fadeOut')
+        // After 4s, fade out the warning screen
+        setTimeout(() => {
+            document.querySelector('.warning').classList.add('animate__fadeOut')
+        }, 4000)
+    }, 2000)
 
     // display enraged boss
     setTimeout(() => {
         document.querySelector('.boss').classList.toggle('hide')
         const inst = document.createElement('h1')
+        inst.style.backgroundColor = 'white'
+        inst.style.borderRadius = '10px'
         inst.textContent = "Kill all the moles to win this final battle before it floods your screen! 10 seconds is all you got."
         inst.classList.add('boss-page-inst')
         bossPage.append(inst)
-    }, 5000)
+    }, 6000)
 
     setTimeout(() => {
         removeBossPage()
         showEndPage()
-    }, 17000)
+    }, 170000)
 }
 
 function removeBossPage() {

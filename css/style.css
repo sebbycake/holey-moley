@@ -112,7 +112,7 @@ h1 {
 }
 
 .animate__animated.animate__fadeOut {
-  --animate-duration: 5s;
+  --animate-duration: 1s;
 }
 
 .boss-page-inst {
