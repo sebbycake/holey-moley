@@ -1,9 +1,9 @@
 let lastHole;
 let timeUp = false;
 let score = 0;
-let atGameStart = true;
-let atGamePage = false;
-let atGameOver = false;
+
+// 0 => start, 1 => during game, 2 => game over
+let gameState = 0
 
 const startPage = document.querySelector('.start-page')
 const gamePage = document.querySelector('.game-page')
@@ -29,7 +29,7 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Time before end game
-const timeBeforeFirstPartEnds = 1000
+const timeBeforeFirstPartEnds = 10000
 
 // Mole logic for first part
 
@@ -75,9 +75,7 @@ function peep() {
 }
 
 function startGame() {
-    atGameStart = false
-    atGamePage = true
-    atGameOver = false
+    gameState = 1
     backgroundMusic.play()
     timeUp = false;
     score = 0;
@@ -90,16 +88,13 @@ function startGame() {
     setTimeout(() => {
         gameOver.play()
         timeUp = true
-        atGamePage = false
-        atGameOver = true
         removeGamePage()
         showBossPage()
     }, timeBeforeFirstPartEnds)
     }
 
 function restartGame() {
-    atGamePage = true
-    atGameOver = false
+    gameState = 1
     backgroundMusic.play()
     scoreBoard.textContent = 0;
     finalScore.textContent = 0;
@@ -113,8 +108,6 @@ function restartGame() {
     removeEndPage()
     showGamePage()
     setTimeout(() => {
-        atGamePage = false
-        atGameOver = true
         gameOver.play()
         timeUp = true
         removeGamePage()
@@ -201,6 +194,7 @@ function removeBossPage() {
 function showEndPage() {
     finalScore.textContent = score;
     endPage.classList.toggle('hide')
+    gameState = 2
 }
 
 function removeEndPage() {
@@ -218,18 +212,15 @@ function recreateTimer() {
 // Set the hammer to follow the mouse
 window.addEventListener('mousemove', (e) => {
     // Only if game is started
-    if (atGamePage) {
+    if (gameState === 1) {
         cursor.style.top = e.clientY - 140 + "px";
         cursor.style.left = e.clientX + "px";
         document.body.style.cursor = "crosshair";
-    }
-
-    if (atGameOver || atGameStart) {
-        cursor.style.visibility = "hidden";
-    } else {
         cursor.style.visibility = "visible";
+    } else {
+        document.body.style.cursor = "inherit";
+        cursor.style.visibility = "hidden";
     }
-
 }, false);
 
 // Make it play an animation when clicked
