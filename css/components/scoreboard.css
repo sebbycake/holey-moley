@@ -35,7 +35,7 @@
   font-weight: bold;
   margin-left: 20px;
   position: absolute;
-  left: 38%;
+  left: 34%;
   top: 35%;
   z-index: 2;
   /* color: #ffa45c; */
@@ -45,8 +45,8 @@
 }
 
 .boss-points {
-  font-size: 250px;
-  left: 33%;
+  font-size: 220px;
+  left: 36%;
   top: 30%;
   color: #a7ff83;
 }
