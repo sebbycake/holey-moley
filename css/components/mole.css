@@ -31,4 +31,5 @@
   top: -3%;
   left: 26%;
   user-select: none;
+  pointer-events: none;
 }
