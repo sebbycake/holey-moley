@@ -39,13 +39,13 @@ const warningTime = 1000
 // Mole logic for first part
 
 // Current difficulty
-var minAppearTime = 500;
+var minAppearTime = 700;
 var maxAppearTime = 1500;
 // Hardest difficulty possible
 const lowestMinAppearTime = 200
 const lowestMaxAppearTime = 700
 // Difficulty multiplier
-const difficultyMultiplier = 0.95
+const difficultyMultiplier = 0.90
 
 // Logic for second part
 var spawnMoleRate = 1000
