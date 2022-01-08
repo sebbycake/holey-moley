@@ -3,7 +3,7 @@ let timeUp = false;
 let score = 0;
 let bossScore = 0;
 
-// 0 => start, 1 => during game, 2 => game over
+// 0 => start, 1 => during game, 3=> bossfight 2 => game over
 let gameState = 0
 
 const startPage = document.querySelector('.start-page')
@@ -33,9 +33,8 @@ const boss1 = document.querySelector('.boss1')
 const boss2 = document.querySelector('.boss2')
 
 // Default values of timing
-const timeBeforeFirstPartEnds = 62000
-const warningTime = 5500
-
+const timeBeforeFirstPartEnds = 1000
+const warningTime = 1000
 
 // Mole logic for first part
 
@@ -150,7 +149,8 @@ function startBossFight() {
 
         inst.classList.add('boss-page-inst', 'animate__animated', 'animate__fadeIn')
 
-        gameState = 1
+        gameState = 3
+
         bossPage.append(inst)
         spawnMoles()
         const timer = document.querySelector('.time2');
@@ -280,7 +280,7 @@ function recreateTimer(content = "01:00") {
 // Set the hammer to follow the mouse
 window.addEventListener('mousemove', (e) => {
     // Only if game is started
-    if (gameState === 1) {
+    if (gameState === 1 || gameState === 3) {
         cursor.classList.remove('hide')
         cursor.style.top = e.clientY - 140 + "px";
         cursor.style.left = e.clientX + "px";
@@ -313,15 +313,16 @@ function startTimer(duration, display) {
             timer = duration;
         }
 
-        // if game state is 2 (at boss fight) then adjust difficulty every second
-        if (gameState === 2) {
+        // if game state is 3 (at boss fight) then adjust difficulty every second
+        if (gameState === 3) {
             adjustBossFightDifficulty()
         }
     }, 1000);
 }
 
 function adjustBossFightDifficulty() {
-    spawnMoleRate = (spawnMoleRate - lowestMoleRate) * difficultyMultiplierBoss + lowestMoleRate
+    spawnMoleRate = (spawnMoleRate ) * difficultyMultiplierBoss 
+
     var rs = getComputedStyle(root);
     const speed = rs.getPropertyValue('--speed')
     const speedInt = parseInt(speed.slice(0, -1))
@@ -369,6 +370,7 @@ function spawnMoles() {
         if (isSpawnMoles) {
             createMole()
             spawnMoles()
+            console.log(spawnMoleRate)
         }
     }, spawnMoleRate)
 }
