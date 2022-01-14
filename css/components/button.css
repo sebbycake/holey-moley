@@ -17,7 +17,6 @@ button {
 
 /* container for button to center it */
 .start-btn {
-    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
